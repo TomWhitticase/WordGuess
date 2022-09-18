@@ -1,0 +1,373 @@
+body {
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+#title{
+    font-weight: bold;
+    font-size: large;
+    border-style: solid;
+    border-color: lightgray;
+    padding: 20px;
+    border-width: 2px;
+    margin-bottom: 10px;
+}
+
+#control-bar{
+    margin:10px;
+}
+#control-bar >*{
+    margin:5px;
+}
+
+.green-letter {
+    color: limegreen;
+    border-color: limegreen;
+}
+
+.orange-letter {
+    color: orange;
+    border-color: orange;
+}
+
+.grey-letter {
+    color: grey;
+    border-color: grey;
+}
+
+.placeholder {
+    color: lightgrey;
+    border-color: lightgrey;
+}
+.placeholder-excluded {
+    color: red;
+}
+
+.placeholder-focussed{
+    border-color: black;
+    border-style: solid !important;
+}
+
+.card {
+    font-size: 30px;
+    border-style: dashed;
+    border-width: 2px;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 38px;
+    margin: 3px;
+}
+
+.animate {
+    animation: flip-in-ver-left 0.5s ease-in-out both;
+}
+
+.guess >* {
+    display: inline-block;
+}
+.guess {
+    margin: 1px;
+}
+#guess{
+    width:150px;
+}
+
+@keyframes flip-in-ver-left {
+    0% {
+        transform: rotateY(80deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+main {
+    text-align: center;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes rotate-180-cw {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes rotate-180-cw {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.spin {
+    -webkit-animation: rotate-180-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: rotate-180-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+.green-btn {
+    padding: 5px;
+    
+    backface-visibility: hidden;
+    background-color: limegreen;
+    border-radius: 4px;
+    border-style: none;
+   
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+
+    text-align: center;
+
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+
+
+#restart{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+#keyboard{
+    margin: 20px;
+}
+
+.keyboard-row >*{
+    
+    margin: 1px;
+    padding: 4px;
+    width: 12px;
+    border-radius: 4px;
+    display: inline-block;
+    align-items: center;
+        
+}
+
+.red-key{
+    color: white;
+    background-color: red;
+    
+}
+.green-key{
+    color: white;
+    background-color: limegreen;  
+}
+.orange-key {
+    color: white;
+    background-color: orange;   
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;  
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: default;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 40%;
+    cursor:default;
+}
+ table {
+     margin: 0 auto;
+ }
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.focus-effect:hover{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.settings-icon{
+    float: right;
+    margin: 10px;
+    height: 40px;
+}
+
+
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: limegreen;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px limegreen;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
