@@ -18,7 +18,7 @@
         </div>
         
         <div id="control-bar">
-            <input type="text" id="guess" name="guess" value="" minlength="3" maxlength="12" autofocus autocomplete="off">
+            <input type="text" id="guess" name="guess" value="" minlength="3" maxlength="12" autofocus autocomplete="off" required>
             <button id="enter" class="green-btn grow" >Enter</button>
             <img id="restart" src="images/restarticon.png" alt="Restart">
         </div>
@@ -30,11 +30,11 @@
                 <table>
                     <tr>   
                         <td><label for="word-length">Word length</label></td>
-                        <td><input id="word-length" min="3" max="12" type="number" value="5"></td>
+                        <td><input id="word-length" min="3" max="12" type="number" value="5" required></td>
                     </tr>
                     <tr>
                         <td><label for="number-of-guesses">Number of guesses</label></td>
-                        <td><input id="number-of-guesses" min="1" max="12" type="number" value="6"></td>
+                        <td><input id="number-of-guesses" min="1" max="12" type="number" value="6" required></td>
                     </tr>
                     <tr>
                         <td><label>Guesses must be real words</label></td>
