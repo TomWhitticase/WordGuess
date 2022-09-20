@@ -1,5 +1,6 @@
 document.getElementById("restart").addEventListener("click", generateWord);
 document.getElementById("enter").addEventListener("click", guessWord);
+let pause = false;
 
 document
   .getElementById("open-settings")
@@ -7,21 +8,26 @@ document
 document
   .getElementById("close-settings")
   .addEventListener("click", closeSettings);
-document
-  .getElementById("apply-settings")
-  .addEventListener("click", createBoard);
 
 function openSettings() {
   document.getElementById("settings").style.display = "block";
+  pause = true;
 }
 function closeSettings() {
   document.getElementById("settings").style.display = "none";
+  pause = false;
 }
 
 document.addEventListener("keydown", function () {
+  focusInput();
+});
+
+function focusInput() {
+  if (pause) return; //ignore if paused (setting menu is open)
+
   document.getElementById("guess").focus();
   showGuess();
-});
+}
 
 document.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -29,8 +35,20 @@ document.addEventListener("keypress", function (event) {
   }
 });
 
-let wordLength; //assigned from settings
-let guesses; //assigned from settings
+function applySettings(e) {
+  e.preventDefault();
+  //get values from settings
+  wordLength = document.getElementById("word-length").value;
+  guesses = document.getElementById("number-of-guesses").value;
+  realGuesses = document.getElementById("real-guesses").checked;
+  createBoard();
+  return false;
+}
+
+let wordLength = document.getElementById("word-length").value;
+let guesses = document.getElementById("number-of-guesses").value;
+let realGuesses = document.getElementById("real-guesses").checked;
+
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let targetWord = "";
 let counter = 0;
@@ -39,17 +57,12 @@ let timeouts = [];
 let excludedLetters = [];
 let guessedWords = [];
 let revealedWord = "";
-let realGuesses = false;
-let realWords = false;
 
 const delayInMilliseconds = 100;
 
 function createBoard() {
-  //get values from settings
-  wordLength = document.getElementById("word-length").value;
-  guesses = document.getElementById("number-of-guesses").value;
-  realGuesses = document.getElementById("real-guesses").checked;
-
+  //clear input
+  document.getElementById("guess").value = "";
   let guessesHtml = "";
   revealedWord = "_".repeat(wordLength);
 

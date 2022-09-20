@@ -26,6 +26,7 @@
         <div id ="settings" class="modal">
             <div class="modal-content">  
                 <div id="close-settings" class="close-modal focus-effect">&times;</div>
+                <form onsubmit="return applySettings(event)">
                 <table>
                     <tr>   
                         <td><label for="word-length">Word length</label></td>
@@ -44,7 +45,8 @@
                     </tr>
                     
                 </table> 
-                <button id="apply-settings" class="green-btn grow">Apply</button>
+                <input type="submit" value="Apply" id="apply-settings" class="green-btn grow">
+                </form>
             </div>
         </div>
             
