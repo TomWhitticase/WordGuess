@@ -2,6 +2,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#guess {
+  text-transform: uppercase;
+}
+
 #title {
   font-weight: bold;
   font-size: large;

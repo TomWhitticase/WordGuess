@@ -82,14 +82,16 @@ function showGuess() {
   //wait 1ms for the dom to update from keypresses
   setTimeout(function () {
     let textBox = document.getElementById("guess");
-    //convert to upperCase
-    textBox.value = textBox.value.toUpperCase();
     //remove invalid characters
-    if (!alphabet.includes(textBox.value.substring(textBox.value.length - 1))) {
+    if (
+      !alphabet.includes(
+        textBox.value.substring(textBox.value.length - 1).toUpperCase()
+      )
+    ) {
       textBox.value = textBox.value.substring(0, textBox.value.length - 1);
     }
 
-    let guess = textBox.value;
+    let guess = textBox.value.toUpperCase();
     let letterCards = document.getElementById(counter).children;
 
     for (let i = 0; i < letterCards.length; i++) {
@@ -223,7 +225,7 @@ function generateWord() {
 
 function guessWord() {
   if (counter >= guesses) return;
-  let guess = document.getElementById("guess").value;
+  let guess = document.getElementById("guess").value.toUpperCase();
   showGuess();
   if (guess.length != wordLength) {
     message(`Enter a ${wordLength} letter word`);
